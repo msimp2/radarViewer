@@ -1,23 +1,18 @@
-﻿let day1TornadoLayer = null;
+﻿let day1HailLayer = null;
 
-export async function addDay1OutlookTornadoLayer(map) {
-    const url = 'https://www.spc.noaa.gov/products/outlook/day1otlk_torn.lyr.geojson';
+export async function addDay1OutlookHailLayer(map) {
+    const url = 'https://www.spc.noaa.gov/products/outlook/day1otlk_hail.lyr.geojson';
     const response = await fetch(url);
     const geojson = await response.json();
 
     // Style function for GeoJSON features
     function style(feature) {
-        if (feature.properties && feature.properties.LABEL === '0.02') {
-            return { color: '#262626', fillColor: '#3eb248', fillOpacity: 0.5, weight: 2 };
-        }
+
         if (feature.properties && feature.properties.LABEL === '0.05') {
             return { color: '#262626', fillColor: '#b2743e', fillOpacity: 0.5, weight: 2 };
         }
-        if (feature.properties && feature.properties.LABEL === '0.1') {
-            return { color: '#262626', fillColor: '#fcfc0c', fillOpacity: 0.5, weight: 2 };
-        }
         if (feature.properties && feature.properties.LABEL === '0.15') {
-            return { color: '#262626', fillColor: '#ff0000', fillOpacity: 0.5, weight: 2 };
+            return { color: '#262626', fillColor: '#fcfc0c', fillOpacity: 0.5, weight: 2 };
         }
         if (feature.properties && feature.properties.LABEL === '0.30') {
             return { color: '#262626', fillColor: '#ff7fd0', fillOpacity: 0.5, weight: 2 };
@@ -52,12 +47,12 @@ export async function addDay1OutlookTornadoLayer(map) {
         }
     }
 
-    day1TornadoLayer = L.geoJSON(geojson, { style, onEachFeature }).addTo(map);
+    day1HailLayer = L.geoJSON(geojson, { style, onEachFeature }).addTo(map);
 }
 
-export function removeDay1OutlookTornadoLayer(map) {
-    if (day1TornadoLayer) {
-        map.removeLayer(day1TornadoLayer);
-        day1TornadoLayer = null;
+export function removeDay1OutlookHailLayer(map) {
+    if (day1HailLayer) {
+        map.removeLayer(day1HailLayer);
+        day1HailLayer = null;
     }
 }

@@ -1,11 +1,13 @@
 ﻿import { showGrid, hideGrid } from './Overlay/latlon.js';
-
 import { setupBasemapSelector } from './Overlay/basemap.js';
-import { addStatesLayer, removeStatesLayer, updateStatesLayerColor } from './Overlay/states.js';
 
+import { addStatesLayer, removeStatesLayer, updateStatesLayerColor } from './Overlay/states.js';
 import { addCountiesLayer, removeCountiesLayer, updateCountiesLayerColor, updateCountiesNamesVisibility } from './Overlay/counties.js';
+
 import { addDay1OutlookCategoricalLayer, removeDay1OutlookCategoricalLayer } from './Overlay/day1OutlookCategorical.js';
 import { addDay1OutlookTornadoLayer, removeDay1OutlookTornadoLayer } from './Overlay/day1OutlookTornado.js';
+import { addDay1OutlookHailLayer, removeDay1OutlookHailLayer } from './Overlay/day1OutlookHail.js';
+import { addDay1OutlookWindLayer, removeDay1OutlookWindLayer } from './Overlay/day1OutlookWind.js';
 
 import { addNexradLayer, removeNexradLayer } from './Overlay/nexrad.js';
 import { addTdwrLayer, removeTdwrLayer } from './Overlay/tdwr.js';
@@ -116,6 +118,26 @@ day1TornadoCheckbox.addEventListener('change', function () {
         addDay1OutlookTornadoLayer(map);
     } else {
         removeDay1OutlookTornadoLayer(map);
+    }
+});
+
+// Day 1 Hail Outlook
+const day1HailCheckbox = document.getElementById('day1-outlook-hail-checkbox');
+day1HailCheckbox.addEventListener('change', function () {
+    if (day1HailCheckbox.checked) {
+        addDay1OutlookHailLayer(map);
+    } else {
+        removeDay1OutlookHailLayer(map);
+    }
+});
+
+// Day 1 Wind Outlook
+const day1WindCheckbox = document.getElementById('day1-outlook-wind-checkbox');
+day1WindCheckbox.addEventListener('change', function () {
+    if (day1WindCheckbox.checked) {
+        addDay1OutlookWindLayer(map);
+    } else {
+        removeDay1OutlookWindLayer(map);
     }
 });
 
