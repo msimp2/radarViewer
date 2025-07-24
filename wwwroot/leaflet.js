@@ -8,6 +8,7 @@ import { addDay1OutlookCategoricalLayer, removeDay1OutlookCategoricalLayer } fro
 import { addDay1OutlookTornadoLayer, removeDay1OutlookTornadoLayer } from './Overlay/day1OutlookTornado.js';
 import { addDay1OutlookHailLayer, removeDay1OutlookHailLayer } from './Overlay/day1OutlookHail.js';
 import { addDay1OutlookWindLayer, removeDay1OutlookWindLayer } from './Overlay/day1OutlookWind.js';
+import { addDay1OutlookDryTstormLayer, removeDay1OutlookDryTstormLayer } from './Overlay/day1OutlookDryTstorm.js';
 
 import { addNexradLayer, removeNexradLayer } from './Overlay/nexrad.js';
 import { addTdwrLayer, removeTdwrLayer } from './Overlay/tdwr.js';
@@ -138,6 +139,16 @@ day1WindCheckbox.addEventListener('change', function () {
         addDay1OutlookWindLayer(map);
     } else {
         removeDay1OutlookWindLayer(map);
+    }
+});
+
+// Day 1 Dry Tstorm Outlook
+const day1DryTstormCheckbox = document.getElementById('day1-outlook-drytstorm-checkbox');
+day1DryTstormCheckbox.addEventListener('change', function () {
+    if (day1DryTstormCheckbox.checked) {
+        addDay1OutlookDryTstormLayer(map);
+    } else {
+        removeDay1OutlookDryTstormLayer(map);
     }
 });
 
