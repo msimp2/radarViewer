@@ -2,6 +2,7 @@
 import { setupBasemapSelector } from './Overlay/basemap.js';
 import { addStatesLayer, removeStatesLayer, updateStatesLayerColor } from './Overlay/states.js';
 import { addCountiesLayer, removeCountiesLayer, updateCountiesLayerColor, updateCountiesNamesVisibility } from './Overlay/counties.js';
+import { addDay1OutlookCategoricalLayer, removeDay1OutlookCategoricalLayer } from './Overlay/day1OutlookCategorical.js';
 import { addNexradLayer, removeNexradLayer } from './Overlay/nexrad.js';
 import { addTdwrLayer, removeTdwrLayer } from './Overlay/tdwr.js';
 
@@ -94,6 +95,16 @@ countiesNamesCheckbox.addEventListener('change', function () {
     }
 });
 
+// Day 1 Categorical Outlook
+const day1CategoricalCheckbox = document.getElementById('day1-outlook-categorical-checkbox');
+day1CategoricalCheckbox.addEventListener('change', function () {
+    if (day1CategoricalCheckbox.checked) {
+        addDay1OutlookCategoricalLayer(map);
+    } else {
+        removeDay1OutlookCategoricalLayer(map);
+    }
+});
+
 // NEXRAD
 const nexradCheckbox = document.getElementById('nexrad-checkbox');
 nexradCheckbox.addEventListener('change', function () {
@@ -113,3 +124,4 @@ tdwrCheckbox.addEventListener('change', function () {
         removeTdwrLayer(map);
     }
 });
+
