@@ -1,8 +1,12 @@
-﻿import { showGrid, hideGrid, getCurrentGridColor } from './Overlay/latlon.js';
+﻿import { showGrid, hideGrid } from './Overlay/latlon.js';
+
 import { setupBasemapSelector } from './Overlay/basemap.js';
 import { addStatesLayer, removeStatesLayer, updateStatesLayerColor } from './Overlay/states.js';
+
 import { addCountiesLayer, removeCountiesLayer, updateCountiesLayerColor, updateCountiesNamesVisibility } from './Overlay/counties.js';
 import { addDay1OutlookCategoricalLayer, removeDay1OutlookCategoricalLayer } from './Overlay/day1OutlookCategorical.js';
+import { addDay1OutlookTornadoLayer, removeDay1OutlookTornadoLayer } from './Overlay/day1OutlookTornado.js';
+
 import { addNexradLayer, removeNexradLayer } from './Overlay/nexrad.js';
 import { addTdwrLayer, removeTdwrLayer } from './Overlay/tdwr.js';
 
@@ -102,6 +106,16 @@ day1CategoricalCheckbox.addEventListener('change', function () {
         addDay1OutlookCategoricalLayer(map);
     } else {
         removeDay1OutlookCategoricalLayer(map);
+    }
+});
+
+// Day 1 Tornado Outlook
+const day1TornadoCheckbox = document.getElementById('day1-outlook-tornado-checkbox');
+day1TornadoCheckbox.addEventListener('change', function () {
+    if (day1TornadoCheckbox.checked) {
+        addDay1OutlookTornadoLayer(map);
+    } else {
+        removeDay1OutlookTornadoLayer(map);
     }
 });
 
