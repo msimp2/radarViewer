@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Leaflet Map Example</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="site.css" />
+</head>
+<body>
+
+    <!-- Title -->
+    <h1 style="margin-top: 24px; margin-bottom: 24px; text-align: center;">
+        Current Radar Viewer
+    </h1>
+
+    <div class="container">
+
+        <!-- Flex row: map and sidebar -->
+        <div style="display: flex; flex-direction: row;">
+            <div id="map"></div>
+            <div id="sidebar">
+
+                <!-- Basemap Selector Dropdown -->
+                <div style="margin-bottom: 8px;">
+                    <label for="basemap-selector">Basemap:</label>
+                    <select id="basemap-selector">
+                        <option value="default">Default</option>
+                        <option value="dark">Dark Mode</option>
+                        <option value="satellite">Satellite</option>
+                    </select>
+                </div>
+
+                <!-- Lat Lon Grid -->
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 0px;">
+                    <label style="display: flex; align-items: center; gap: 12px; margin: 0;">
+                        <input type="checkbox" id="toggleGridCheckbox" />
+                        <span style="font-size: 0.95em;">Lat/Lon</span>
+                    </label>
+                    <input type="color" id="gridColorInput" value="#888888" style="width: 60px; height: 32px;" />
+                </div>
+                <div id="colorError" class="latlon-modal-error"></div>
+
+                <!-- States overlay checkbox and color input -->
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <input type="checkbox" id="states-checkbox">
+                    <label for="states-checkbox" style="margin: 0 8px 0 0;">States</label>
+                    <input type="color" id="statesColorInput" value="#3388ff" style="width: 60px; height: 32px;" />
+                </div>
+
+                <!-- Counties overlay checkbox and color input -->
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px; margin-top: 16px;">
+                    <input type="checkbox" id="counties-checkbox">
+                    <label for="counties-checkbox" style="margin: 0 -10px 0 0;">Counties</label>
+                    <input type="color" id="countiesColorInput" value="#ff8800" style="width: 60px; height: 32px;" />
+                    <input type="checkbox" id="counties-names-checkbox">
+                    <label for="counties-names-checkbox" style="margin: 0 8px 0 0;">names</label>
+                </div>
+
+                <!-- Day 1 Outlook Categorical -->
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px; margin-top: 16px; ">
+                    <input type="checkbox" id="day1-outlook-categorical-checkbox">
+                    <label for="day1-outlook-categorical-checkbox" style="margin: 0 8px 0 0;">Day 1 Categorical</label>
+                </div>
+
+                <!-- Day 1 Outlook Tornado -->
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px; margin-top: 16px; ">
+                    <input type="checkbox" id="day1-outlook-tornado-checkbox">
+                    <label for="day1-outlook-tornado-checkbox" style="margin: 0 8px 0 0;">Day 1 Tornado</label>
+                </div>
+
+                <!-- Day 1 Outlook Hail -->
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px; margin-top: 16px; ">
+                    <input type="checkbox" id="day1-outlook-hail-checkbox">
+                    <label for="day1-outlook-hail-checkbox" style="margin: 0 8px 0 0;">Day 1 Hail</label>
+                </div>
+
+                <!-- Day 1 Outlook Wind -->
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px; margin-top: 16px; ">
+                    <input type="checkbox" id="day1-outlook-wind-checkbox">
+                    <label for="day1-outlook-wind-checkbox" style="margin: 0 8px 0 0;">Day 1 Wind</label>
+                </div>
+
+                <!-- Day 1 Outlook Isolated Fire - Dry Tstorm -->
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px; margin-top: 16px; ">
+                    <input type="checkbox" id="day1-outlook-drytstorm-checkbox">
+                    <label for="day1-outlook-srytstorm-checkbox" style="margin: 0 8px 0 0;">Day 1 Dry Tstorm</label>
+                </div>
+
+                <!-- NEXRAD Sites -->
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px; margin-top: 16px; ">
+                    <input type="checkbox" id="nexrad-checkbox">
+                    <label for="nexrad-checkbox" style="margin: 0 8px 0 0;">NEXRAD</label>
+                </div>
+
+                <!-- TDWR Sites -->
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <input type="checkbox" id="tdwr-checkbox">
+                    <label for="tdwr-checkbox" style="margin: 0 8px 0 0;">TDWR</label>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script type="module" src="leaflet.js"></script>
+</body>
+</html>
