@@ -11,6 +11,7 @@ import { addDay1OutlookWindLayer, removeDay1OutlookWindLayer } from './Overlay/d
 import { addDay1OutlookDryTstormLayer, removeDay1OutlookDryTstormLayer } from './Overlay/day1OutlookDryTstorm.js';
 import { addCurrentTornadoWarnLayer, removeCurrentTornadoWarnLayer } from './Overlay/currentTornadoWarn.js';
 import { addCurrentSevereWarnLayer, removeCurrentSevereWarnLayer } from './Overlay/currentSevereWarn.js';
+import { addCurrentFlashFloodWarnLayer, removeCurrentFlashFloodWarnLayer } from './Overlay/currentFlashFloodWarn.js';
 
 import { addNexradLayer, removeNexradLayer } from './Overlay/nexrad.js';
 import { addTdwrLayer, removeTdwrLayer } from './Overlay/tdwr.js';
@@ -171,6 +172,16 @@ currentSevereWarnCheckbox.addEventListener('change', function () {
         addCurrentSevereWarnLayer(map);
     } else {
         removeCurrentSevereWarnLayer(map);
+    }
+});
+
+// Current Flash Flood Warnings
+const currentFlashFloodWarnCheckbox = document.getElementById('current-flashflood-warn-checkbox');
+currentFlashFloodWarnCheckbox.addEventListener('change', function () {
+    if (currentFlashFloodWarnCheckbox.checked) {
+        addCurrentFlashFloodWarnLayer(map);
+    } else {
+        removeCurrentFlashFloodWarnLayer(map);
     }
 });
 
