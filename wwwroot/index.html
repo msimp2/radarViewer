@@ -2,9 +2,17 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Leaflet Map Example</title>
+
+    <!-- Leaflet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" href="site.css" />
+
+    <!-- JSZip -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+    <!-- shpjs (reads shapefile from zip) -->
+    <script src="https://unpkg.com/shpjs@latest/dist/shp.min.js"></script>
+
 </head>
 <body>
 
@@ -83,7 +91,13 @@
                 <!-- Day 1 Outlook Isolated Fire - Dry Tstorm -->
                 <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px; margin-top: 16px; ">
                     <input type="checkbox" id="day1-outlook-drytstorm-checkbox">
-                    <label for="day1-outlook-srytstorm-checkbox" style="margin: 0 8px 0 0;">SPC Dry Tstorm Outlook</label>
+                    <label for="day1-outlook-drytstorm-checkbox" style="margin: 0 8px 0 0;">SPC Dry Tstorm Outlook</label>
+                </div>
+
+                <!-- Current Tornado Warnings -->
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px; margin-top: 16px; ">
+                    <input type="checkbox" id="current-tornado-warn-checkbox">
+                    <label for="current-tornado-warn-checkbox" style="margin: 0 8px 0 0;">Current Tornado Warnings</label>
                 </div>
 
                 <!-- NEXRAD Sites -->

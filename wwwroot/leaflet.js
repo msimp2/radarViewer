@@ -9,6 +9,7 @@ import { addDay1OutlookTornadoLayer, removeDay1OutlookTornadoLayer } from './Ove
 import { addDay1OutlookHailLayer, removeDay1OutlookHailLayer } from './Overlay/day1OutlookHail.js';
 import { addDay1OutlookWindLayer, removeDay1OutlookWindLayer } from './Overlay/day1OutlookWind.js';
 import { addDay1OutlookDryTstormLayer, removeDay1OutlookDryTstormLayer } from './Overlay/day1OutlookDryTstorm.js';
+import { addCurrentTornadoWarnLayer, removeCurrentTornadoWarnLayer } from './Overlay/currentTornadoWarn.js';
 
 import { addNexradLayer, removeNexradLayer } from './Overlay/nexrad.js';
 import { addTdwrLayer, removeTdwrLayer } from './Overlay/tdwr.js';
@@ -149,6 +150,16 @@ day1DryTstormCheckbox.addEventListener('change', function () {
         addDay1OutlookDryTstormLayer(map);
     } else {
         removeDay1OutlookDryTstormLayer(map);
+    }
+});
+
+// Current Tornado Watches
+const currentTornadoWarnCheckbox = document.getElementById('current-tornado-warn-checkbox');
+currentTornadoWarnCheckbox.addEventListener('change', function () {
+    if (currentTornadoWarnCheckbox.checked) {
+        addCurrentTornadoWarnLayer(map);
+    } else {
+        removeCurrentTornadoWarnLayer(map);
     }
 });
 
