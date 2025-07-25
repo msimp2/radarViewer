@@ -10,6 +10,7 @@ import { addDay1OutlookHailLayer, removeDay1OutlookHailLayer } from './Overlay/d
 import { addDay1OutlookWindLayer, removeDay1OutlookWindLayer } from './Overlay/day1OutlookWind.js';
 import { addDay1OutlookDryTstormLayer, removeDay1OutlookDryTstormLayer } from './Overlay/day1OutlookDryTstorm.js';
 import { addCurrentTornadoWarnLayer, removeCurrentTornadoWarnLayer } from './Overlay/currentTornadoWarn.js';
+import { addCurrentSevereWarnLayer, removeCurrentSevereWarnLayer } from './Overlay/currentSevereWarn.js';
 
 import { addNexradLayer, removeNexradLayer } from './Overlay/nexrad.js';
 import { addTdwrLayer, removeTdwrLayer } from './Overlay/tdwr.js';
@@ -153,13 +154,23 @@ day1DryTstormCheckbox.addEventListener('change', function () {
     }
 });
 
-// Current Tornado Watches
+// Current Tornado Warnings
 const currentTornadoWarnCheckbox = document.getElementById('current-tornado-warn-checkbox');
 currentTornadoWarnCheckbox.addEventListener('change', function () {
     if (currentTornadoWarnCheckbox.checked) {
         addCurrentTornadoWarnLayer(map);
     } else {
         removeCurrentTornadoWarnLayer(map);
+    }
+});
+
+// Current Severe Warnings
+const currentSevereWarnCheckbox = document.getElementById('current-severe-warn-checkbox');
+currentSevereWarnCheckbox.addEventListener('change', function () {
+    if (currentSevereWarnCheckbox.checked) {
+        addCurrentSevereWarnLayer(map);
+    } else {
+        removeCurrentSevereWarnLayer(map);
     }
 });
 
