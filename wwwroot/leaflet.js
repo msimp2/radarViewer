@@ -14,6 +14,8 @@ import { addCurrentSevereWarnLayer, removeCurrentSevereWarnLayer } from './Overl
 import { addCurrentFlashFloodWarnLayer, removeCurrentFlashFloodWarnLayer } from './Overlay/currentFlashFloodWarn.js';
 
 import { addConusBrefLayer, removeConusBrefLayer } from './Plotter/conusBref.js';
+import { addAlaskaBrefLayer, removeAlaskaBrefLayer } from './Plotter/alaskaBref.js';
+
 import { addConusCrefLayer, removeConusCrefLayer } from './Plotter/conusCref.js';
 
 import { addNexradLayer, removeNexradLayer } from './Overlay/nexrad.js';
@@ -245,7 +247,11 @@ tdwrCheckbox.addEventListener('change', function () {
     }
 });
 
-// MOSAICKED LAYERS
+////////////////////////
+// MOSAICKED LAYERS BREF
+////////////////////////
+
+// CONUS
 const conusBrefCheckbox = document.getElementById('conus-bref-checkbox');
 conusBrefCheckbox.addEventListener('change', function () {
     if (conusBrefCheckbox.checked) {
@@ -255,6 +261,18 @@ conusBrefCheckbox.addEventListener('change', function () {
     }
 });
 
+// ALASKA
+const alaskaBrefCheckbox = document.getElementById('alaska-bref-checkbox');
+alaskaBrefCheckbox.addEventListener('change', function () {
+    if (alaskaBrefCheckbox.checked) {
+        addAlaskaBrefLayer(map);
+    } else {
+        removeAlaskaBrefLayer(map);
+    }
+});
+
+
+// MOSAICKED LAYERS CREF
 const conusCrefCheckbox = document.getElementById('conus-cref-checkbox');
 conusCrefCheckbox.addEventListener('change', function () {
     if (conusCrefCheckbox.checked) {
