@@ -13,6 +13,8 @@ import { addCurrentTornadoWarnLayer, removeCurrentTornadoWarnLayer } from './Ove
 import { addCurrentSevereWarnLayer, removeCurrentSevereWarnLayer } from './Overlay/currentSevereWarn.js';
 import { addCurrentFlashFloodWarnLayer, removeCurrentFlashFloodWarnLayer } from './Overlay/currentFlashFloodWarn.js';
 
+import { addConusBrefLayer, removeConusBrefLayer } from './Plotter/conusBref.js';
+
 import { addNexradLayer, removeNexradLayer } from './Overlay/nexrad.js';
 import { addTdwrLayer, removeTdwrLayer } from './Overlay/tdwr.js';
 
@@ -205,3 +207,12 @@ tdwrCheckbox.addEventListener('change', function () {
     }
 });
 
+// MOSAICKED LAYERS
+const conusBrefCheckbox = document.getElementById('conus-bref-checkbox');
+conusBrefCheckbox.addEventListener('change', function () {
+    if (conusBrefCheckbox.checked) {
+        addConusBrefLayer(map);
+    } else {
+        removeConusBrefLayer(map);
+    }
+});

@@ -13,6 +13,8 @@ import { addCurrentTornadoWarnLayer, removeCurrentTornadoWarnLayer } from './Ove
 import { addCurrentSevereWarnLayer, removeCurrentSevereWarnLayer } from './Overlay/currentSevereWarn.js';
 import { addCurrentFlashFloodWarnLayer, removeCurrentFlashFloodWarnLayer } from './Overlay/currentFlashFloodWarn.js';
 
+import { addConusBrefLayer, removeConusBrefLayer } from './Plotter/conusBref.js';
+
 import { addNexradLayer, removeNexradLayer } from './Overlay/nexrad.js';
 import { addTdwrLayer, removeTdwrLayer } from './Overlay/tdwr.js';
 
@@ -56,11 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // --- END CLOCKS ---
-
-var map = L.map('map').setView([40, -100], 6);
-setupBasemapSelector(map);
-window.map = map;
-
 
 const tileLayerUrls = {
     default: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -244,6 +241,16 @@ tdwrCheckbox.addEventListener('change', function () {
         addTdwrLayer(map);
     } else {
         removeTdwrLayer(map);
+    }
+});
+
+// MOSAICKED LAYERS
+const conusBrefCheckbox = document.getElementById('conus-bref-checkbox');
+conusBrefCheckbox.addEventListener('change', function () {
+    if (conusBrefCheckbox.checked) {
+        addConusBrefLayer(map);
+    } else {
+        removeConusBrefLayer(map);
     }
 });
 
