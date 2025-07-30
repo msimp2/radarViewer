@@ -14,6 +14,7 @@ import { addCurrentSevereWarnLayer, removeCurrentSevereWarnLayer } from './Overl
 import { addCurrentFlashFloodWarnLayer, removeCurrentFlashFloodWarnLayer } from './Overlay/currentFlashFloodWarn.js';
 
 import { addConusBrefLayer, removeConusBrefLayer } from './Plotter/conusBref.js';
+import { addConusCrefLayer, removeConusCrefLayer } from './Plotter/conusCref.js';
 
 import { addNexradLayer, removeNexradLayer } from './Overlay/nexrad.js';
 import { addTdwrLayer, removeTdwrLayer } from './Overlay/tdwr.js';
@@ -254,3 +255,11 @@ conusBrefCheckbox.addEventListener('change', function () {
     }
 });
 
+const conusCrefCheckbox = document.getElementById('conus-cref-checkbox');
+conusCrefCheckbox.addEventListener('change', function () {
+    if (conusCrefCheckbox.checked) {
+        addConusCrefLayer(map);
+    } else {
+        removeConusCrefLayer(map);
+    }
+});
