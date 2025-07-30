@@ -17,6 +17,7 @@ import { addConusBrefLayer, removeConusBrefLayer } from './Plotter/conusBref.js'
 import { addAlaskaBrefLayer, removeAlaskaBrefLayer } from './Plotter/alaskaBref.js';
 
 import { addConusCrefLayer, removeConusCrefLayer } from './Plotter/conusCref.js';
+import { addAlaskaCrefLayer, removeAlaskaCrefLayer } from './Plotter/alaskaCref.js';
 
 import { addNexradLayer, removeNexradLayer } from './Overlay/nexrad.js';
 import { addTdwrLayer, removeTdwrLayer } from './Overlay/tdwr.js';
@@ -271,13 +272,26 @@ alaskaBrefCheckbox.addEventListener('change', function () {
     }
 });
 
-
+////////////////////////
 // MOSAICKED LAYERS CREF
+////////////////////////
+
+// CONUS
 const conusCrefCheckbox = document.getElementById('conus-cref-checkbox');
 conusCrefCheckbox.addEventListener('change', function () {
     if (conusCrefCheckbox.checked) {
         addConusCrefLayer(map);
     } else {
         removeConusCrefLayer(map);
+    }
+});
+
+// ALASKA
+const alaskaCrefCheckbox = document.getElementById('alaska-cref-checkbox');
+alaskaCrefCheckbox.addEventListener('change', function () {
+    if (alaskaCrefCheckbox.checked) {
+        addAlaskaCrefLayer(map);
+    } else {
+        removeAlaskaCrefLayer(map);
     }
 });
