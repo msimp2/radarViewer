@@ -15,9 +15,15 @@ import { addCurrentFlashFloodWarnLayer, removeCurrentFlashFloodWarnLayer } from 
 
 import { addConusBrefLayer, removeConusBrefLayer } from './Plotter/conusBref.js';
 import { addAlaskaBrefLayer, removeAlaskaBrefLayer } from './Plotter/alaskaBref.js';
+import { addHawaiiBrefLayer, removeHawaiiBrefLayer } from './Plotter/hawaiiBref.js';
+import { addCaribbeanBrefLayer, removeCaribbeanBrefLayer } from './Plotter/caribbeanBref.js';
+import { addGuamBrefLayer, removeGuamBrefLayer } from './Plotter/guamBref.js';
 
 import { addConusCrefLayer, removeConusCrefLayer } from './Plotter/conusCref.js';
 import { addAlaskaCrefLayer, removeAlaskaCrefLayer } from './Plotter/alaskaCref.js';
+import { addHawaiiCrefLayer, removeHawaiiCrefLayer } from './Plotter/hawaiiCref.js';
+import { addCaribbeanCrefLayer, removeCaribbeanCrefLayer } from './Plotter/caribbeanCref.js';
+import { addGuamCrefLayer, removeGuamCrefLayer } from './Plotter/guamCref.js';
 
 import { addNexradLayer, removeNexradLayer } from './Overlay/nexrad.js';
 import { addTdwrLayer, removeTdwrLayer } from './Overlay/tdwr.js';
@@ -272,6 +278,36 @@ alaskaBrefCheckbox.addEventListener('change', function () {
     }
 });
 
+// Hawaii
+const hawaiiBrefCheckbox = document.getElementById('hawaii-bref-checkbox');
+hawaiiBrefCheckbox.addEventListener('change', function () {
+    if (hawaiiBrefCheckbox.checked) {
+        addHawaiiBrefLayer(map);
+    } else {
+        removeHawaiiBrefLayer(map);
+    }
+});
+
+// CARIBBEAN
+const caribbeanBrefCheckbox = document.getElementById('caribbean-bref-checkbox');
+caribbeanBrefCheckbox.addEventListener('change', function () {
+    if (caribbeanBrefCheckbox.checked) {
+        addCaribbeanBrefLayer(map);
+    } else {
+        removeCaribbeanBrefLayer(map);
+    }
+});
+
+// GUAM
+const guamBrefCheckbox = document.getElementById('guam-bref-checkbox');
+guamBrefCheckbox.addEventListener('change', function () {
+    if (guamBrefCheckbox.checked) {
+        addGuamBrefLayer(map);
+    } else {
+        removeGuamBrefLayer(map);
+    }
+});
+
 ////////////////////////
 // MOSAICKED LAYERS CREF
 ////////////////////////
@@ -293,5 +329,35 @@ alaskaCrefCheckbox.addEventListener('change', function () {
         addAlaskaCrefLayer(map);
     } else {
         removeAlaskaCrefLayer(map);
+    }
+});
+
+// Hawaii
+const hawaiiCrefCheckbox = document.getElementById('hawaii-cref-checkbox');
+hawaiiCrefCheckbox.addEventListener('change', function () {
+    if (hawaiiCrefCheckbox.checked) {
+        addHawaiiCrefLayer(map);
+    } else {
+        removeHawaiiCrefLayer(map);
+    }
+});
+
+// CARIBBEAN
+const caribbeanCrefCheckbox = document.getElementById('caribbean-cref-checkbox');
+caribbeanCrefCheckbox.addEventListener('change', function () {
+    if (caribbeanCrefCheckbox.checked) {
+        addCaribbeanCrefLayer(map);
+    } else {
+        removeCaribbeanCrefLayer(map);
+    }
+});
+
+// GUAM
+const guamCrefCheckbox = document.getElementById('guam-cref-checkbox');
+guamCrefCheckbox.addEventListener('change', function () {
+    if (guamCrefCheckbox.checked) {
+        addGuamCrefLayer(map);
+    } else {
+        removeGuamCrefLayer(map);
     }
 });
