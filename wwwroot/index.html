@@ -120,18 +120,6 @@
                     <label for="current-flashflood-warn-checkbox" style="margin: 0 8px 0 0;">Current Flash Flood Warnings</label>
                 </div>
 
-                <!-- NEXRAD Sites -->
-                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px; margin-top: 16px; ">
-                    <input type="checkbox" id="nexrad-checkbox">
-                    <label for="nexrad-checkbox" style="margin: 0 8px 0 0;">NEXRAD</label>
-                </div>
-
-                <!-- TDWR Sites -->
-                <div style="display: flex; align-items: center; gap: 12px;">
-                    <input type="checkbox" id="tdwr-checkbox">
-                    <label for="tdwr-checkbox" style="margin: 0 8px 0 0;">TDWR</label>
-                </div>
-
             </div>
         </div>
 
@@ -151,6 +139,25 @@
         <label for="caribbean-bref-checkbox">Caribbean</label>
         <input type="checkbox" id="guam-bref-checkbox">
         <label for="guam-bref-checkbox">Guam</label>
+        <div style="margin-left: 50px;">
+            <span style="font-size: 1.2em; font-weight: bold;">NEXRAD</span>
+        </div>
+        <div style="margin-left: 1px;">
+            <input type="checkbox" id="nexrad-reflectivity-checkbox">
+            <label for="nexrad-reflectivity-checkbox" style="margin: 0 1px 0 0;">Reflectivity</label>
+        </div>
+        <div style="margin-left: 1px;">
+            <input type="checkbox" id="nexrad-velocity-checkbox">
+            <label for="nexrad-velocity-checkbox" style="margin: 0 1px 0 0;">Velocity</label>
+        </div>
+        <div style="margin-left: 1px;">
+            <input type="checkbox" id="nexrad-dhc-checkbox">
+            <label for="nexrad-dhc-checkbox" style="margin: 0 1px 0 0;">DHC</label>
+        </div>
+        <div style="margin-left: 1px;">
+            <input type="checkbox" id="nexrad-accumulation-checkbox">
+            <label for="nexrad-accumulation-checkbox" style="margin: 0 1px 0 0;">Accumulation</label>
+        </div>
     </div>
 
     <!-- CREF -->
@@ -166,6 +173,17 @@
         <label for="caribbean-cref-checkbox">Caribbean</label>
         <input type="checkbox" id="guam-cref-checkbox">
         <label for="guam-cref-checkbox">Guam</label>
+        <div style="margin-left: 50px;">
+            <span style="font-size: 1.2em; font-weight: bold;">TDWR</span>
+        </div>
+        <div style="margin-left: 21px;">
+            <input type="checkbox" id="tdwr-reflectivity-checkbox">
+            <label for="tdwr-reflectivity-checkbox" style="margin: 0 1px 0 0;">Reflectivity</label>
+        </div>
+        <div style="margin-left: 1px;">
+            <input type="checkbox" id="tdwr-velocity-checkbox">
+            <label for="tdwr-velocity-checkbox" style="margin: 0 1px 0 0;">Velocity</label>
+        </div>
     </div>
 
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
