@@ -14,13 +14,65 @@ import { addCurrentSevereWarnLayer, removeCurrentSevereWarnLayer } from './Overl
 import { addCurrentFlashFloodWarnLayer, removeCurrentFlashFloodWarnLayer } from './Overlay/currentFlashFloodWarn.js';
 
 import { addConusBrefLayer, removeConusBrefLayer } from './Plotter/conusBref.js';
+import { addAlaskaBrefLayer, removeAlaskaBrefLayer } from './Plotter/alaskaBref.js';
+import { addHawaiiBrefLayer, removeHawaiiBrefLayer } from './Plotter/hawaiiBref.js';
+import { addCaribbeanBrefLayer, removeCaribbeanBrefLayer } from './Plotter/caribbeanBref.js';
+import { addGuamBrefLayer, removeGuamBrefLayer } from './Plotter/guamBref.js';
 
-import { addNexradLayer, removeNexradLayer } from './Overlay/nexrad.js';
-import { addTdwrLayer, removeTdwrLayer } from './Overlay/tdwr.js';
+import { addConusCrefLayer, removeConusCrefLayer } from './Plotter/conusCref.js';
+import { addAlaskaCrefLayer, removeAlaskaCrefLayer } from './Plotter/alaskaCref.js';
+import { addHawaiiCrefLayer, removeHawaiiCrefLayer } from './Plotter/hawaiiCref.js';
+import { addCaribbeanCrefLayer, removeCaribbeanCrefLayer } from './Plotter/caribbeanCref.js';
+import { addGuamCrefLayer, removeGuamCrefLayer } from './Plotter/guamCref.js';
+
+import { addNexradReflectivityLayer, removeNexradReflectivityLayer } from './Plotter/nexradReflectivity.js';
+import { addNexradVelocityLayer, removeNexradVelocityLayer } from './Plotter/nexradVelocity.js';
+import { addNexradDHCLayer, removeNexradDHCLayer } from './Plotter/nexradDHC.js';
+import { addNexradAccumulationLayer, removeNexradAccumulationLayer } from './Plotter/nexradAccumulation.js';
+
+import { addTdwrReflectivityLayer, removeTdwrReflectivityLayer } from './Plotter/tdwrReflectivity.js';
+import { addTdwrVelocityLayer, removeTdwrVelocityLayer } from './Plotter/tdwrVelocity.js';
 
 var map = L.map('map').setView([40, -100], 6);
 setupBasemapSelector(map);
 window.map = map;
+
+
+function pad(n) {
+    return n < 10 ? '0' + n : n;
+}
+
+function updateClocks() {
+    const now = new Date();
+
+    // Local time (24-hour)
+    const localHours = pad(now.getHours());
+    const localMinutes = pad(now.getMinutes());
+    const localSeconds = pad(now.getSeconds());
+    const localTime = `${localHours}:${localMinutes}:${localSeconds}`;
+    const localClockElem = document.getElementById('local-clock');
+    if (localClockElem) {
+        localClockElem.textContent = `Local: ${localTime}`;
+    }
+
+    // UTC time (24-hour)
+    const utcHours = pad(now.getUTCHours());
+    const utcMinutes = pad(now.getUTCMinutes());
+    const utcSeconds = pad(now.getUTCSeconds());
+    const utcTime = `${utcHours}:${utcMinutes}:${utcSeconds}`;
+    const utcClockElem = document.getElementById('utc-clock');
+    if (utcClockElem) {
+        utcClockElem.textContent = `UTC: ${utcTime}`;
+    }
+}
+
+// Start the clocks when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    updateClocks();
+    setInterval(updateClocks, 1000);
+});
+
+// --- END CLOCKS ---
 
 const tileLayerUrls = {
     default: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -187,32 +239,182 @@ currentFlashFloodWarnCheckbox.addEventListener('change', function () {
     }
 });
 
-// NEXRAD
-const nexradCheckbox = document.getElementById('nexrad-checkbox');
-nexradCheckbox.addEventListener('change', function () {
-    if (nexradCheckbox.checked) {
-        addNexradLayer(map);
-    } else {
-        removeNexradLayer(map);
-    }
-});
 
-// TDWR
-const tdwrCheckbox = document.getElementById('tdwr-checkbox');
-tdwrCheckbox.addEventListener('change', function () {
-    if (tdwrCheckbox.checked) {
-        addTdwrLayer(map);
-    } else {
-        removeTdwrLayer(map);
-    }
-});
+////////////////////////
+// MOSAICKED LAYERS BREF
+////////////////////////
 
-// MOSAICKED LAYERS
+// CONUS
 const conusBrefCheckbox = document.getElementById('conus-bref-checkbox');
 conusBrefCheckbox.addEventListener('change', function () {
     if (conusBrefCheckbox.checked) {
         addConusBrefLayer(map);
     } else {
         removeConusBrefLayer(map);
+    }
+});
+
+// ALASKA
+const alaskaBrefCheckbox = document.getElementById('alaska-bref-checkbox');
+alaskaBrefCheckbox.addEventListener('change', function () {
+    if (alaskaBrefCheckbox.checked) {
+        addAlaskaBrefLayer(map);
+    } else {
+        removeAlaskaBrefLayer(map);
+    }
+});
+
+// Hawaii
+const hawaiiBrefCheckbox = document.getElementById('hawaii-bref-checkbox');
+hawaiiBrefCheckbox.addEventListener('change', function () {
+    if (hawaiiBrefCheckbox.checked) {
+        addHawaiiBrefLayer(map);
+    } else {
+        removeHawaiiBrefLayer(map);
+    }
+});
+
+// CARIBBEAN
+const caribbeanBrefCheckbox = document.getElementById('caribbean-bref-checkbox');
+caribbeanBrefCheckbox.addEventListener('change', function () {
+    if (caribbeanBrefCheckbox.checked) {
+        addCaribbeanBrefLayer(map);
+    } else {
+        removeCaribbeanBrefLayer(map);
+    }
+});
+
+// GUAM
+const guamBrefCheckbox = document.getElementById('guam-bref-checkbox');
+guamBrefCheckbox.addEventListener('change', function () {
+    if (guamBrefCheckbox.checked) {
+        addGuamBrefLayer(map);
+    } else {
+        removeGuamBrefLayer(map);
+    }
+});
+
+////////////////////////
+// MOSAICKED LAYERS CREF
+////////////////////////
+
+// CONUS
+const conusCrefCheckbox = document.getElementById('conus-cref-checkbox');
+conusCrefCheckbox.addEventListener('change', function () {
+    if (conusCrefCheckbox.checked) {
+        addConusCrefLayer(map);
+    } else {
+        removeConusCrefLayer(map);
+    }
+});
+
+// ALASKA
+const alaskaCrefCheckbox = document.getElementById('alaska-cref-checkbox');
+alaskaCrefCheckbox.addEventListener('change', function () {
+    if (alaskaCrefCheckbox.checked) {
+        addAlaskaCrefLayer(map);
+    } else {
+        removeAlaskaCrefLayer(map);
+    }
+});
+
+// Hawaii
+const hawaiiCrefCheckbox = document.getElementById('hawaii-cref-checkbox');
+hawaiiCrefCheckbox.addEventListener('change', function () {
+    if (hawaiiCrefCheckbox.checked) {
+        addHawaiiCrefLayer(map);
+    } else {
+        removeHawaiiCrefLayer(map);
+    }
+});
+
+// CARIBBEAN
+const caribbeanCrefCheckbox = document.getElementById('caribbean-cref-checkbox');
+caribbeanCrefCheckbox.addEventListener('change', function () {
+    if (caribbeanCrefCheckbox.checked) {
+        addCaribbeanCrefLayer(map);
+    } else {
+        removeCaribbeanCrefLayer(map);
+    }
+});
+
+// GUAM
+const guamCrefCheckbox = document.getElementById('guam-cref-checkbox');
+guamCrefCheckbox.addEventListener('change', function () {
+    if (guamCrefCheckbox.checked) {
+        addGuamCrefLayer(map);
+    } else {
+        removeGuamCrefLayer(map);
+    }
+});
+
+
+
+////////////////////////
+// NEXRAD
+////////////////////////
+
+// Reflectivity
+const nexradReflectivityCheckbox = document.getElementById('nexrad-reflectivity-checkbox');
+nexradReflectivityCheckbox.addEventListener('change', function () {
+    if (nexradReflectivityCheckbox.checked) {
+        addNexradReflectivityLayer(map);
+    } else {
+        removeNexradReflectivityLayer(map);
+    }
+});
+
+// Velocity
+const nexradVelocityCheckbox = document.getElementById('nexrad-velocity-checkbox');
+nexradVelocityCheckbox.addEventListener('change', function () {
+    if (nexradVelocityCheckbox.checked) {
+        addNexradVelocityLayer(map);
+    } else {
+        removeNexradVelocityLayer(map);
+    }
+});
+
+// DHC
+const nexradDHCCheckbox = document.getElementById('nexrad-dhc-checkbox');
+nexradDHCCheckbox.addEventListener('change', function () {
+    if (nexradDHCCheckbox.checked) {
+        addNexradDHCLayer(map);
+    } else {
+        removeNexradDHCLayer(map);
+    }
+});
+
+// 1h Accumulation
+const nexradAccumulationCheckbox = document.getElementById('nexrad-accumulation-checkbox');
+nexradAccumulationCheckbox.addEventListener('change', function () {
+    if (nexradAccumulationCheckbox.checked) {
+        addNexradAccumulationLayer(map);
+    } else {
+        removeNexradAccumulationLayer(map);
+    }
+});
+
+
+////////////////////////
+// TDWR
+////////////////////////
+
+// Reflectivity
+const tdwrReflectivityCheckbox = document.getElementById('tdwr-reflectivity-checkbox');
+tdwrReflectivityCheckbox.addEventListener('change', function () {
+    if (tdwrReflectivityCheckbox.checked) {
+        addTdwrReflectivityLayer(map);
+    } else {
+        removeTdwrReflectivityLayer(map);
+    }
+});
+
+// Velocity
+const tdwrVelocityCheckbox = document.getElementById('tdwr-velocity-checkbox');
+tdwrVelocityCheckbox.addEventListener('change', function () {
+    if (tdwrVelocityCheckbox.checked) {
+        addTdwrVelocityLayer(map);
+    } else {
+        removeTdwrVelocityLayer(map);
     }
 });
