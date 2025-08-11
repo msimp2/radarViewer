@@ -12,9 +12,9 @@ export function addNexradLayer(map) {
     NEXRAD.forEach(station => {
         // Circle marker
         const marker = L.circleMarker([station.Latitude, station.Longitude], {
-            radius: 6,
-            fillColor: '#0074D9',
-            color: '#0074D9',
+            radius: 16,
+            fillColor: '#FFFFFF',
+            color: '#FFFFFF',
             weight: 1,
             opacity: 1,
             fillOpacity: 0.9

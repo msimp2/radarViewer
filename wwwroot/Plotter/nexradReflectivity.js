@@ -11,17 +11,29 @@ export function addNexradReflectivityLayer(map) {
 
     // Store WMS layers by station name for toggling
     const wmsLayers = {};
+    const selectedStations = {};
 
     NEXRAD.forEach(station => {
         // Circle marker
         const marker = L.circleMarker([station.Latitude, station.Longitude], {
             radius: 6,
-            fillColor: '#0074D9',
-            color: '#0074D9',
-            weight: 1,
+            fillColor: '#FF0000',
+            color: '#0000FF',
+            weight: 3,
             opacity: 1,
             fillOpacity: 0.9
         })
+
+        marker.on('click', function () {
+            const isSelected = selectedStations[station.Name];
+            if (isSelected) {
+                marker.setStyle({ fillColor: '#FF0000' });
+                selectedStations[station.Name] = false;
+            } else {
+                marker.setStyle({ fillColor: '#00FF00' });
+                selectedStations[station.Name] = true;
+            }
+        });
 
         // Toggle WMS layer on marker click
         marker.on('click', function () {
