@@ -1,4 +1,4 @@
-﻿import { TDWR } from '../Reference/tdwr.js';
+﻿import { TDWR } from '../Reference/TDWR.js';
 
 let tdwrReflectivityLayer = null;
 
